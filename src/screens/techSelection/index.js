@@ -38,6 +38,10 @@ const TechSelectionScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Welcome to Interview AI!</Text>
+      <Text style={styles.sectionDescription}>
+        This is a app to Help at your Interview.
+      </Text>
       <FlatList
         data={technologies}
         renderItem={renderTechButton}
@@ -75,6 +79,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  sectionTitle: {
+    fontSize: 28,
+    fontWeight: '600',
+    color: '#000',
+  },
+  sectionDescription: {
+    marginBottom: 20,
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#666',
   },
 });
 
