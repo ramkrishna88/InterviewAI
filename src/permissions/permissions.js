@@ -1,5 +1,4 @@
-// permissions.js
-import {Platform} from 'react-native';
+import {Platform, Alert, Linking} from 'react-native';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 const permissions = {
@@ -53,11 +52,23 @@ const checkPhotoLibraryPermission = async () => {
   return await checkPermission(permissions.photoLibrary);
 };
 
+// Helper function to alert user about denied permission
+const alertForSettings = permissionName => {
+  Alert.alert(
+    'Permission Required',
+    `${permissionName} permission is required. Please enable it in settings.`,
+    [
+      {text: 'Cancel', style: 'cancel'},
+      {text: 'Go to Settings', onPress: () => Linking.openSettings()},
+    ],
+  );
+};
+
 // Exporting functions
 export {
   checkMicrophonePermission,
   requestMicrophonePermission,
   checkPhotoLibraryPermission,
   requestPhotoLibraryPermission,
-  // Export other request functions as needed
+  alertForSettings,
 };
